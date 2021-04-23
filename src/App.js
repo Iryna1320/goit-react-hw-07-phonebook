@@ -1,15 +1,13 @@
 import React, { Component, Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
 import AppBar from './components/AppBar';
-// import ContactsView from './views/ContactsVIew';
-// import HomeView from './views/HomeView';
-// import RegisterView from './views/RegisterView';
-// import LoginView from './views/LoginView';
 import Container from './components/Container';
 import { authOperations } from './redux/auth';
 import { connect } from 'react-redux';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Spinner } from 'react-bootstrap';
 
 const HomeView = lazy(() => import('./views/HomeView'));
 const RegisterView = lazy(() => import('./views/RegisterView'));
@@ -26,7 +24,15 @@ class App extends Component {
       <Container>
         <AppBar />
 
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense
+          fallback={
+            <div className="d-flex justify-content-center">
+              <Spinner animation="border" variant="danger" role="status">
+                <span className="sr-only">Loading...</span>
+              </Spinner>
+            </div>
+          }
+        >
           <Switch>
             <PublicRoute exact path="/" component={HomeView} />
             <PublicRoute

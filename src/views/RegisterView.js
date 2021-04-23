@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Form, Button } from 'react-bootstrap';
 
 const styles = {
+  h1: {
+    textAlign: 'center',
+    color: '#E84A5F',
+  },
   form: {
     width: 320,
+    margin: 'auto',
   },
   label: {
     display: 'flex',
@@ -37,45 +44,55 @@ class RegisterView extends Component {
 
     return (
       <div>
-        <h1>Страница регистрации</h1>
+        <h1 style={styles.h1}>Страница регистрации</h1>
 
-        <form
+        <Form
           onSubmit={this.handleSubmit}
           style={styles.form}
           autoComplete="off"
         >
-          <label style={styles.label}>
-            Имя
-            <input
+          <Form.Group controlId="formPlaintextEmail">
+            <Form.Label column sm="7">
+              Your name
+            </Form.Label>
+            <Form.Control
               type="text"
               name="name"
-              value={name}
+              placeholder="Enter your name"
               onChange={this.handleChange}
+              value={name}
             />
-          </label>
-
-          <label style={styles.label}>
-            Почта
-            <input
+          </Form.Group>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label column sm="7">
+              Email address
+            </Form.Label>
+            <Form.Control
               type="email"
               name="email"
-              value={email}
+              placeholder="Enter email"
               onChange={this.handleChange}
+              value={email}
             />
-          </label>
+          </Form.Group>
 
-          <label style={styles.label}>
-            Пароль
-            <input
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label column sm="7">
+              Password
+            </Form.Label>
+            <Form.Control
               type="password"
               name="password"
-              value={password}
+              placeholder="Password"
               onChange={this.handleChange}
+              value={password}
             />
-          </label>
+          </Form.Group>
 
-          <button type="submit">Зарегистрироваться</button>
-        </form>
+          <Button type="submit" variant="danger" size="lg" block>
+            Зарегистрироваться
+          </Button>
+        </Form>
       </div>
     );
   }

@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../redux/auth';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Form } from 'react-bootstrap';
 
 const styles = {
+  h1: {
+    textAlign: 'center',
+    color: '#E84A5F',
+  },
   form: {
     width: 320,
+    margin: 'auto',
   },
   label: {
     display: 'flex',
@@ -36,35 +43,45 @@ class LoginView extends Component {
 
     return (
       <div>
-        <h1>Страница логина</h1>
+        <h1 style={styles.h1}>Страница логина</h1>
 
-        <form
+        <Form
           onSubmit={this.handleSubmit}
           style={styles.form}
           autoComplete="off"
         >
-          <label style={styles.label}>
-            Почта
-            <input
+          <Form.Group controlId="formPlaintextEmail">
+            <Form.Label column sm="2">
+              Email
+            </Form.Label>
+
+            <Form.Control
+              placeholder="Email"
               type="email"
               name="email"
               value={email}
               onChange={this.handleChange}
             />
-          </label>
+          </Form.Group>
 
-          <label style={styles.label}>
-            Пароль
-            <input
+          <Form.Group controlId="formPlaintextPassword">
+            <Form.Label column sm="2">
+              Password
+            </Form.Label>
+
+            <Form.Control
               type="password"
+              placeholder="Password"
               name="password"
               value={password}
               onChange={this.handleChange}
             />
-          </label>
+          </Form.Group>
 
-          <button type="submit">Войти</button>
-        </form>
+          <Button type="submit" variant="danger" size="lg" block>
+            Войти
+          </Button>
+        </Form>
       </div>
     );
   }

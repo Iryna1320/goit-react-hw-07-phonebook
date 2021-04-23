@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { authOperations, authSelectors } from '../../redux/auth';
 import defaultAvatar from './default-avatar.png';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
 
 const styles = {
   container: {
@@ -21,9 +23,9 @@ const UserMenu = ({ avatar, name, onLogout }) => (
   <div style={styles.container}>
     <img src={avatar} alt="" width="32" style={styles.avatar} />
     <span style={styles.name}>Welcome, {name}</span>
-    <button type="button" onClick={onLogout}>
+    <Button type="button" variant="primary" onClick={onLogout}>
       Logout
-    </button>
+    </Button>
   </div>
 );
 

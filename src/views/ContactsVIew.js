@@ -7,10 +7,24 @@ import ContactList from '../components/ContactList';
 
 import { contactsOperations, contactsSelectors } from '../redux/contacts';
 
-const barStyles = {
-  display: 'flex',
-  alignItems: 'flex-end',
-  marginBottom: 20,
+const styles = {
+  barStyles: {
+    // display: 'flex',
+    // alignItems: 'flex-end',
+    // justifyContent: 'center',
+    // marginBottom: 20,
+  },
+  containerBox: {
+    width: 500,
+    margin: 'auto',
+    textAlign: 'left',
+    backgroundColor: 'inherit',
+  },
+  title: {
+    marginTop: 15,
+    marginBottom: 15,
+    color: '#E84A5F',
+  },
 };
 
 class ContactsView extends Component {
@@ -21,11 +35,11 @@ class ContactsView extends Component {
   render() {
     return (
       <Container>
-        <div className={barStyles}>
-          <h1>Phonebook</h1>
+        <div style={styles.containerBox}>
+          <h1 style={styles.title}>Phonebook</h1>
           <ContactForm />
 
-          <h2>Contacts</h2>
+          <h2 style={styles.title}>Contacts</h2>
           {this.props.isLoadingContacts && <h1>Loading...</h1>}
           <Filter />
 
