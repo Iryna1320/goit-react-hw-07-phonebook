@@ -8,12 +8,6 @@ import ContactList from '../components/ContactList';
 import { contactsOperations, contactsSelectors } from '../redux/contacts';
 
 const styles = {
-  barStyles: {
-    // display: 'flex',
-    // alignItems: 'flex-end',
-    // justifyContent: 'center',
-    // marginBottom: 20,
-  },
   containerBox: {
     width: 500,
     margin: 'auto',
